@@ -19,8 +19,6 @@ export async function loginRequest(credentials: LoginCredentials): Promise<Login
     email: credentials.email.trim(),
     password: credentials.password,
   });
-  console.log('Login url:', axiosInstance.defaults.baseURL + '/auth/login');
-  console.log('Login response:', data);
 
   return data;
 }
