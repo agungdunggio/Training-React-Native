@@ -3,7 +3,7 @@
  */
 
 import { AppRegistry } from 'react-native';
-import App from './src-challenge1/App';
+import App from './src-movieapp/App';
 import { name as appName } from './app.json';
 
 // messaging().setBackgroundMessageHandler(async remoteMessage => {
