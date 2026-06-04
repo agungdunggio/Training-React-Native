@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Dimensions, Image, ImageBackground } from 'react-native';
+import { StyleSheet, Text, View, Image, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import type { StackNavigationProp } from '@react-navigation/stack';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -7,7 +7,6 @@ import { colors } from '../styles/colors';
 import CustomButton from '../components/CustomButton';
 import type { RootStackParamList } from '../navigation/types';
 
-const { width } = Dimensions.get('window');
 type NavigationProp = StackNavigationProp<RootStackParamList>;
 
 export default function IntroScreen() {

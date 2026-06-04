@@ -9,14 +9,12 @@ import {
   TextInput,
   ActivityIndicator,
   Platform,
-  Dimensions,
-  Alert
+  Dimensions
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import type { StackNavigationProp } from '@react-navigation/stack';
 import { colors } from '../styles/colors';
-import { useAuthController } from '../controllers/useAuthController';
 import { useMovieController } from '../controllers/useMovieController';
 import type { RootStackParamList } from '../navigation/types';
 import { tmdbClient } from '../../data/data_sources/tmdb_client';
@@ -107,8 +105,7 @@ const MOCK_TOP_RATED = [
 
 export default function HomeScreen() {
   const navigation = useNavigation<NavigationProp>();
-  const { currentUser } = useAuthController();
-  const { navigateToAccount, getPopularMovies } = useMovieController();
+  const { getPopularMovies } = useMovieController();
 
   const [popular, setPopular] = useState<any[]>(MOCK_POPULAR);
   const [nowPlaying, setNowPlaying] = useState<any[]>(MOCK_NOW_PLAYING);
@@ -166,7 +163,7 @@ export default function HomeScreen() {
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [getPopularMovies]);
 
   const handleMoviePress = (item: any) => {
     const domainMovie = item.year !== undefined ? item : mapTMDbMovieToDomain(item);
@@ -306,7 +303,7 @@ export default function HomeScreen() {
           </View>
 
           
-          <View style={[styles.sectionContainer, { marginBottom: 32 }]}>
+          <View style={styles.lastSectionContainer}>
             <Text style={styles.sectionTitle}>Top Rated Movies</Text>
             <ScrollView
               horizontal
@@ -384,6 +381,10 @@ const styles = StyleSheet.create({
   },
   sectionContainer: {
     marginTop: 24,
+  },
+  lastSectionContainer: {
+    marginTop: 24,
+    marginBottom: 32,
   },
   sectionTitle: {
     fontSize: 18,

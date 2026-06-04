@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import type { StackNavigationProp } from '@react-navigation/stack';
@@ -12,9 +13,9 @@ export function useMovieController() {
   const authService = AuthService.getInstance();
   const movieService = MovieService.getInstance();
 
-  const getPopularMovies = async (language: string = 'id-ID') => {
+  const getPopularMovies = useCallback(async (language: string = 'id-ID') => {
     return await movieService.getPopularMoviesUseCase.execute(language);
-  };
+  }, [movieService]);
 
   const guardRestrictedAction = async (actionLabel: string, callback: () => void) => {
     try {

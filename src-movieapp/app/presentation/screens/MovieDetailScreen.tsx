@@ -14,7 +14,6 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation, useRoute, type RouteProp } from '@react-navigation/native';
 import Svg, { Path, Polygon, Polyline } from 'react-native-svg';
-import { colors } from '../styles/colors';
 import { useMovieController } from '../controllers/useMovieController';
 import type { RootStackParamList } from '../navigation/types';
 
@@ -162,11 +161,9 @@ export default function MovieDetailScreen() {
         <Animated.View
           style={[
             StyleSheet.absoluteFill,
+            styles.animatedHeaderBg,
             {
-              backgroundColor: '#0a1526',
               opacity: headerBgOpacity,
-              borderBottomWidth: 1,
-              borderBottomColor: 'rgba(255,255,255,0.08)',
             }
           ]}
         />
@@ -333,6 +330,11 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     zIndex: 10,
+  },
+  animatedHeaderBg: {
+    backgroundColor: '#0a1526',
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(255,255,255,0.08)',
   },
   headerContent: {
     flexDirection: 'row',

@@ -13,7 +13,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import type { StackNavigationProp } from '@react-navigation/stack';
 import Svg, { Path, Polygon, Polyline, Line } from 'react-native-svg';
-import { colors } from '../styles/colors';
 import { useAuthController } from '../controllers/useAuthController';
 import type { RootStackParamList } from '../navigation/types';
 
@@ -117,8 +116,8 @@ export default function AccountScreen({ route, isTab: propIsTab = false }: { rou
       {/* Immersive Dark Blue Profile Banner matching screenshot */}
       <View style={[styles.profileBanner, isTab && styles.profileBannerTab]}>
         {/* Subtle cyan diagonal accent lines overlays matching layout bounds */}
-        <View style={[styles.bannerAccentLine, { transform: [{ rotate: '-45deg' }], top: -20, right: 30 }]} />
-        <View style={[styles.bannerAccentLine, { transform: [{ rotate: '-45deg' }], top: 10, right: -10 }]} />
+        <View style={[styles.bannerAccentLine, styles.bannerAccentLine1]} />
+        <View style={[styles.bannerAccentLine, styles.bannerAccentLine2]} />
 
         <View style={styles.profileHeaderContent}>
           <Image
@@ -261,6 +260,16 @@ const styles = StyleSheet.create({
     height: 3,
     backgroundColor: '#01b4e4',
     opacity: 0.15,
+  },
+  bannerAccentLine1: {
+    transform: [{ rotate: '-45deg' }],
+    top: -20,
+    right: 30,
+  },
+  bannerAccentLine2: {
+    transform: [{ rotate: '-45deg' }],
+    top: 10,
+    right: -10,
   },
   profileHeaderContent: {
     flexDirection: 'row',

@@ -25,6 +25,13 @@ type Props = {
   navigation: NavigationProp;
 };
 
+const LoginHeaderTitle = () => (
+  <Image
+    source={require('../../../assets/logo.png')}
+    style={styles.headerLogo}
+  />
+);
+
 export default function LoginScreen({ navigation }: Props) {
   const {
     control,
@@ -45,12 +52,7 @@ export default function LoginScreen({ navigation }: Props) {
         elevation: 0,
       },
       headerTintColor: colors.white,
-      headerTitle: () => (
-        <Image
-          source={require('../../../assets/logo.png')}
-          style={{ width: 100, height: 35, resizeMode: 'contain' }}
-        />
-      ),
+      headerTitle: LoginHeaderTitle,
     });
   }, [navigation]);
 
@@ -122,7 +124,7 @@ export default function LoginScreen({ navigation }: Props) {
                 theme="light"
               />
 
-              <View style={{ height: 16 }} />
+              <View style={styles.spacer} />
 
               <CustomButton
                 title="Login as Guest"
@@ -144,6 +146,11 @@ const styles = StyleSheet.create({
   safe: {
     flex: 1,
     backgroundColor: colors.white,
+  },
+  headerLogo: {
+    width: 100,
+    height: 35,
+    resizeMode: 'contain',
   },
   keyboardContainer: {
     flex: 1,
@@ -173,6 +180,9 @@ const styles = StyleSheet.create({
   },
   actionContainer: {
     marginTop: 8,
+  },
+  spacer: {
+    height: 16,
   },
   trainingHintBox: {
     backgroundColor: '#f8fafc',
